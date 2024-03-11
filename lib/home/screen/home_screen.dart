@@ -19,14 +19,27 @@ class HomeScreen extends StatelessWidget {
             Gap(64),
             TextFormField(
               decoration: InputDecoration(
-                border: OutlineInputBorder( //<-- SEE HERE
-                  borderSide: BorderSide(
-                      width: 1, color: Colors.redAccent),
-                ),),
+                hintText: 'Enter your password.',
+                contentPadding:
+                EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide:
+                  BorderSide(color: colorScheme.primary, width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide:
+                  BorderSide(color: colorScheme.primary, width: 2.0),
+                  borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                ),
+              ),
             ),
             Card(
+
               child: ListTile(
-                // tileColor: colorScheme.primaryContainer,
                 onTap: () {
 
                 },
