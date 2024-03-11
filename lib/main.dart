@@ -1,3 +1,4 @@
+import 'package:commando_test_app/core/binding/main_binding.dart';
 import 'package:commando_test_app/home/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -13,12 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: HomeScreen(),
+      initialBinding: MainBinding(),
     );
   }
 }
