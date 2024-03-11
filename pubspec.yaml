@@ -38,6 +38,8 @@ dependencies:
   get: ^4.6.6
   toggle_switch: ^2.1.0
   gap: ^3.0.1
+  dio: ^5.4.0
+  oktoast: ^3.4.0
 
 dev_dependencies:
   flutter_test:
