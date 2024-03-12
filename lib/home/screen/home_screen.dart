@@ -91,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                             onTap: null,
                             title: Text(
                               "Fire",
-                              style: textTheme.headlineMedium?.copyWith(color: Colors.black),
+                              style: textTheme.headlineSmall?.copyWith(color: Colors.black),
                             ),
                             trailing: ToggleSwitch(
                               minWidth: 55,
@@ -134,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                             onTap: null,
                             title: Text(
                               "Smoke",
-                              style: textTheme.headlineMedium?.copyWith(color: Colors.black),
+                              style: textTheme.headlineSmall?.copyWith(color: Colors.black),
                             ),
                             trailing: ToggleSwitch(
                               minWidth: 55,
@@ -177,7 +177,7 @@ class HomeScreen extends StatelessWidget {
                             onTap: null,
                             title: Text(
                               "Shutter",
-                              style: textTheme.headlineMedium?.copyWith(color: Colors.black),
+                              style: textTheme.headlineSmall?.copyWith(color: Colors.black),
                             ),
                             trailing: ToggleSwitch(
                               minWidth: 55,
@@ -220,7 +220,7 @@ class HomeScreen extends StatelessWidget {
                               onTap: null,
                               title: Text(
                                 "Motion",
-                                style: textTheme.headlineMedium?.copyWith(color: Colors.black),
+                                style: textTheme.headlineSmall?.copyWith(color: Colors.black),
                               ),
                               trailing: ToggleSwitch(
                                 minWidth: 55,
