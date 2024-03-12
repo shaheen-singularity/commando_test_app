@@ -81,6 +81,7 @@ class HomeController extends GetxController {
     }
   }
 
+
   Future onReset() async {
     try {
       final res = await repository.onReset(
