@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                     const Gap(8),
                     Card(
                       child: ListTile(
-                        onTap: () {},
+                        onTap: null,
                         title: Text(
                           "Fire",
                           style: textTheme.headlineMedium
@@ -103,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                     Card(
                       child: ListTile(
                         // tileColor: colorScheme.primaryContainer,
-                        onTap: () {},
+                        onTap: null,
                         title: Text(
                           "Smoke",
                           style: textTheme.headlineMedium
@@ -153,7 +153,7 @@ class HomeScreen extends StatelessWidget {
                     Card(
                       child: ListTile(
                         // tileColor: colorScheme.primaryContainer,
-                        onTap: () {},
+                        onTap: null,
                         title: Text(
                           "Shutter",
                           style: textTheme.headlineMedium
@@ -203,7 +203,7 @@ class HomeScreen extends StatelessWidget {
                     Card(
                       child: ListTile(
                         // tileColor: colorScheme.primaryContainer,
-                          onTap: () {},
+                          onTap: null,
                           title: Text(
                             "Motion",
                             style: textTheme.headlineMedium
