@@ -95,6 +95,7 @@ class HomeController extends GetxController {
     }
   }
 
+
   Future onReset() async {
 
     try {
