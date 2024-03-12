@@ -1,3 +1,4 @@
+import 'package:commando_test_app/core/utils/resource_ui_state.dart';
 import 'package:commando_test_app/core/view/app_toast.dart';
 import 'package:commando_test_app/home/controller/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -17,38 +18,61 @@ class HomeScreen extends StatelessWidget {
         init: HomeController(),
         builder: (controller) {
           return Scaffold(
-            body: Padding(
+              body: Obx(
+            () => Padding(
               padding: const EdgeInsets.all(8.0),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
                     const Gap(64),
-                    TextFormField(
-                      controller: controller.regNumberController,
-                      onChanged: (value) {
-                        controller.regNumber(int.parse(value));
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'Enter your password.',
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 16.0, horizontal: 12.0),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: controller.regNumberController,
+                            onChanged: (value) {
+                              controller.regNumber(int.parse(value));
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Enter your password.',
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 16.0, horizontal: 12.0),
+                              border: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(16.0)),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: colorScheme.primary, width: 1.0),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(16.0)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: colorScheme.primary, width: 2.0),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(16.0)),
+                              ),
+                            ),
+                          ),
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: colorScheme.primary, width: 1.0),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16.0)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: colorScheme.primary, width: 2.0),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16.0)),
-                        ),
-                      ),
+                        const Gap(8),
+                        Obx(
+                          () => FilledButton(
+                              onPressed: () {
+                                controller.regNumberController.clear();
+                                controller.onReset();
+                              },
+                              child: controller.resetState == Status.loading
+                                  ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(color: Colors.white,strokeWidth: 3,),
+                              )
+                                  : const Text('Reset')),
+                        )
+                      ],
                     ),
                     const Gap(8),
                     Card(
@@ -88,7 +112,8 @@ class HomeScreen extends StatelessWidget {
                           curve: Curves.easeOut,
                           onToggle: (index) {
                             if (controller.regNumberController.text.isNum &&
-                                controller.regNumberController.text.isNotEmpty) {
+                                controller
+                                    .regNumberController.text.isNotEmpty) {
                               controller.value(index);
                               controller.sensorType('C');
                               controller.onUpdateFire();
@@ -138,7 +163,8 @@ class HomeScreen extends StatelessWidget {
                           curve: Curves.easeOut,
                           onToggle: (index) {
                             if (controller.regNumberController.text.isNum &&
-                                controller.regNumberController.text.isNotEmpty) {
+                                controller
+                                    .regNumberController.text.isNotEmpty) {
                               controller.value(index);
                               controller.sensorType('D');
                               controller.onUpdateSmoke();
@@ -188,7 +214,8 @@ class HomeScreen extends StatelessWidget {
                                   : false,
                           onToggle: (index) {
                             if (controller.regNumberController.text.isNum &&
-                                controller.regNumberController.text.isNotEmpty) {
+                                controller
+                                    .regNumberController.text.isNotEmpty) {
                               controller.value(index);
                               controller.sensorType('E');
                               controller.onUpdateShutter();
@@ -213,7 +240,8 @@ class HomeScreen extends StatelessWidget {
                             minWidth: 65,
                             minHeight: 25.0,
                             initialLabelIndex:
-                                controller.motionSensorUpdateStatus.value == true
+                                controller.motionSensorUpdateStatus.value ==
+                                        true
                                     ? 1
                                     : 0,
                             cornerRadius: 8.0,
@@ -233,7 +261,8 @@ class HomeScreen extends StatelessWidget {
                             // animate: true,
                             curve: Curves.easeOut,
                             changeOnTap:
-                                controller.motionSensorUpdateStatus.value == true
+                                controller.motionSensorUpdateStatus.value ==
+                                        true
                                     ? true
                                     : false,
                             onToggle: (index) {
@@ -244,7 +273,8 @@ class HomeScreen extends StatelessWidget {
                                 controller.sensorType('F');
                                 controller.onUpdateMotion();
                               } else {
-                                AppToast.showError("Please enter valid ID first");
+                                AppToast.showError(
+                                    "Please enter valid ID first");
                               }
                             },
                           )),
@@ -253,7 +283,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-          );
+          ));
         });
   }
 }
