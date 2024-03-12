@@ -53,28 +53,35 @@ class HomeScreen extends StatelessWidget {
                             ),
                             const Gap(8),
                             Obx(
-                              () => FilledButton(
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                              () => Container(
+                                height: 50,
+                                child: FilledButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16.0),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                  onPressed: () {
-                                    controller.regNumberController.clear();
-                                    controller.onReset();
-                                  },
-                                  child: controller.resetState == Status.loading
-                                      ? const SizedBox(
-                                          height: 20,
-                                          width: 20,
-                                          child: CircularProgressIndicator(
-                                            color: Colors.white,
-                                            strokeWidth: 3,
-                                          ),
-                                        )
-                                      : const Text('Reset')),
+                                    onPressed: () {
+                                   if(controller.regNumberController.text.isNotEmpty){
+                                     controller.regNumberController.clear();
+                                     controller.onReset();
+                                   }else{
+                                     AppToast.showError("Please enter valid ID first");
+                                   }
+                                    },
+                                    child: controller.resetState == Status.loading
+                                        ? const SizedBox(
+                                            height: 20,
+                                            width: 20,
+                                            child: CircularProgressIndicator(
+                                              color: Colors.white,
+                                              strokeWidth: 3,
+                                            ),
+                                          )
+                                        : const Text('Reset')),
+                              ),
                             )
                           ],
                         ),
