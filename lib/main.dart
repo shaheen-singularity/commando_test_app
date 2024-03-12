@@ -2,6 +2,9 @@ import 'package:commando_test_app/core/binding/main_binding.dart';
 import 'package:commando_test_app/home/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:oktoast/oktoast.dart';
+
+import 'core/binding/main_binding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +17,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
+
+    return OKToast(child: GetMaterialApp(
+    debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

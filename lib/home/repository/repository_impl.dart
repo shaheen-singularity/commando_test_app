@@ -9,8 +9,10 @@ class RepositoryImpl extends Repository {
   @override
   Future onUpdate(int id, String type, int value) async {
     try {
-      final response = await apiClient.post("$BASE_URL$UPDATE$id&$type=$value");
-      return response;
+      final response = await apiClient.post("$UPDATE$id&$type=$value");
+      print(response.data['status']);
+      print("---------");
+      return response.data['status'];
     } catch (e) {
       rethrow;
     }
