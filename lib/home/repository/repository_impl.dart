@@ -1,6 +1,5 @@
 import 'package:commando_test_app/core/network/api_client.dart';
 import 'package:commando_test_app/core/utils/constant.dart';
-import 'package:commando_test_app/home/dto/sensor_response.dart';
 import 'package:commando_test_app/home/repository/repository.dart';
 import 'package:get/get.dart';
 
@@ -11,8 +10,9 @@ class RepositoryImpl extends Repository {
   Future onUpdate(int id, String type, int value) async {
     try {
       final response = await apiClient.post("$UPDATE$id&$type=$value");
-      print(response);
-      return response;
+      print(response.data['status']);
+      print("---------");
+      return response.data['status'];
     } catch (e) {
       rethrow;
     }
