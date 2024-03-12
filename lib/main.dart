@@ -16,10 +16,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-
-    return OKToast(child: GetMaterialApp(
-    debugShowCheckedModeBanner: false,
+    return OKToast(
+        child: GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -27,6 +26,6 @@ class MyApp extends StatelessWidget {
       ),
       home: HomeScreen(),
       initialBinding: MainBinding(),
-    );
+    ));
   }
 }

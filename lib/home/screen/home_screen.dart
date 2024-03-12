@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeController>(
         init: HomeController(),
         builder: (controller) {
-          return Scaffold(
+          return Obx(() => Scaffold(
             body: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Padding(
@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                         controller.regNumber(int.parse(value));
                       },
                       decoration: InputDecoration(
-                        hintText: 'Enter your password.',
+                        hintText: 'Type registration number here',
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 16.0, horizontal: 12.0),
                         border: const OutlineInputBorder(
@@ -38,15 +38,15 @@ class HomeScreen extends StatelessWidget {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: colorScheme.primary, width: 1.0),
+                          BorderSide(color: colorScheme.primary, width: 1.0),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(16.0)),
+                          const BorderRadius.all(Radius.circular(16.0)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: colorScheme.primary, width: 2.0),
+                          BorderSide(color: colorScheme.primary, width: 2.0),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(16.0)),
+                          const BorderRadius.all(Radius.circular(16.0)),
                         ),
                       ),
                     ),
@@ -63,9 +63,9 @@ class HomeScreen extends StatelessWidget {
                           minWidth: 65,
                           minHeight: 25.0,
                           initialLabelIndex:
-                              controller.fireSensorUpdateStatus.value == true
-                                  ? 1
-                                  : 0,
+                          controller.fireSensorUpdateStatus.value == true
+                              ? 1
+                              : 0,
                           cornerRadius: 8.0,
                           activeFgColor: Colors.white,
                           inactiveBgColor: Colors.grey,
@@ -82,9 +82,9 @@ class HomeScreen extends StatelessWidget {
                           ],
                           animate: true,
                           changeOnTap:
-                              controller.fireSensorUpdateStatus.value == true
-                                  ? true
-                                  : false,
+                          controller.fireSensorUpdateStatus.value == true
+                              ? true
+                              : false,
                           curve: Curves.easeOut,
                           onToggle: (index) {
                             if (controller.regNumberController.text.isNum &&
@@ -113,9 +113,9 @@ class HomeScreen extends StatelessWidget {
                           minWidth: 65,
                           minHeight: 25.0,
                           initialLabelIndex:
-                              controller.smokeSensorUpdateStatus.value == true
-                                  ? 1
-                                  : 0,
+                          controller.smokeSensorUpdateStatus.value == true
+                              ? 1
+                              : 0,
                           cornerRadius: 8.0,
                           activeFgColor: Colors.white,
                           inactiveBgColor: Colors.grey,
@@ -132,9 +132,9 @@ class HomeScreen extends StatelessWidget {
                           ],
                           animate: true,
                           changeOnTap:
-                              controller.smokeSensorUpdateStatus.value == true
-                                  ? true
-                                  : false,
+                          controller.smokeSensorUpdateStatus.value == true
+                              ? true
+                              : false,
                           curve: Curves.easeOut,
                           onToggle: (index) {
                             if (controller.regNumberController.text.isNum &&
@@ -163,9 +163,9 @@ class HomeScreen extends StatelessWidget {
                           minWidth: 65,
                           minHeight: 25.0,
                           initialLabelIndex:
-                              controller.shutterSensorUpdateStatus.value == true
-                                  ? 1
-                                  : 0,
+                          controller.shutterSensorUpdateStatus.value == true
+                              ? 1
+                              : 0,
                           cornerRadius: 8.0,
                           activeFgColor: Colors.white,
                           inactiveBgColor: Colors.grey,
@@ -183,9 +183,9 @@ class HomeScreen extends StatelessWidget {
                           animate: true,
                           curve: Curves.easeOut,
                           changeOnTap:
-                              controller.shutterSensorUpdateStatus.value == true
-                                  ? true
-                                  : false,
+                          controller.shutterSensorUpdateStatus.value == true
+                              ? true
+                              : false,
                           onToggle: (index) {
                             if (controller.regNumberController.text.isNum &&
                                 controller.regNumberController.text.isNotEmpty) {
@@ -202,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                     const Gap(8),
                     Card(
                       child: ListTile(
-                          // tileColor: colorScheme.primaryContainer,
+                        // tileColor: colorScheme.primaryContainer,
                           onTap: () {},
                           title: Text(
                             "Motion",
@@ -213,9 +213,9 @@ class HomeScreen extends StatelessWidget {
                             minWidth: 65,
                             minHeight: 25.0,
                             initialLabelIndex:
-                                controller.motionSensorUpdateStatus.value == true
-                                    ? 1
-                                    : 0,
+                            controller.motionSensorUpdateStatus.value == true
+                                ? 1
+                                : 0,
                             cornerRadius: 8.0,
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,
@@ -230,12 +230,12 @@ class HomeScreen extends StatelessWidget {
                               [Colors.red],
                               [Colors.green]
                             ],
-                            // animate: true,
+                            animate: true,
                             curve: Curves.easeOut,
                             changeOnTap:
-                                controller.motionSensorUpdateStatus.value == true
-                                    ? true
-                                    : false,
+                            controller.motionSensorUpdateStatus.value == true
+                                ? true
+                                : false,
                             onToggle: (index) {
                               if (controller.regNumberController.text.isNum &&
                                   controller
@@ -253,7 +253,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-          );
+          ));
         });
   }
 }
