@@ -11,6 +11,17 @@ class RepositoryImpl extends Repository {
     try {
       final response = await apiClient.post("$UPDATE$id&$type=$value");
       return response;
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future onReset(int id) async {
+    try {
+      final response = await apiClient.post("$UPDATE$id&C=0&D=0&E=0&F=0");
+      return response;
     } catch (e) {
       rethrow;
     }

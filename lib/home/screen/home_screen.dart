@@ -24,31 +24,53 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const Gap(64),
-                    TextFormField(
-                      controller: controller.regNumberController,
-                      onChanged: (value) {
-                        controller.regNumber(int.parse(value));
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'Type registration number here',
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 16.0, horizontal: 12.0),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: controller.regNumberController,
+                            onChanged: (value) {
+                              controller.regNumber(int.parse(value));
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Enter your password.',
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 16.0, horizontal: 12.0),
+                              border: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(16.0)),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: colorScheme.primary, width: 1.0),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(16.0)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: colorScheme.primary, width: 2.0),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(16.0)),
+                              ),
+                            ),
+                          ),
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide:
-                          BorderSide(color: colorScheme.primary, width: 1.0),
-                          borderRadius:
-                          const BorderRadius.all(Radius.circular(16.0)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                          BorderSide(color: colorScheme.primary, width: 2.0),
-                          borderRadius:
-                          const BorderRadius.all(Radius.circular(16.0)),
-                        ),
-                      ),
+                        const Gap(8),
+                        Obx(
+                          () => FilledButton(
+                              onPressed: () {
+                                controller.regNumberController.clear();
+                                controller.onReset();
+                              },
+                              child: controller.resetState == Status.loading
+                                  ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(color: Colors.white,strokeWidth: 3,),
+                              )
+                                  : const Text('Reset')),
+                        )
+                      ],
                     ),
                     const Gap(8),
                     Card(
@@ -82,13 +104,14 @@ class HomeScreen extends StatelessWidget {
                           ],
                           animate: true,
                           changeOnTap:
-                          controller.fireSensorUpdateStatus.value == true
-                              ? true
-                              : false,
+                              controller.fireSensorUpdateStatus.value == true
+                                  ? true
+                                  : false,
                           curve: Curves.easeOut,
                           onToggle: (index) {
                             if (controller.regNumberController.text.isNum &&
-                                controller.regNumberController.text.isNotEmpty) {
+                                controller
+                                    .regNumberController.text.isNotEmpty) {
                               controller.value(index);
                               controller.sensorType('C');
                               controller.onUpdateFire();
@@ -138,7 +161,8 @@ class HomeScreen extends StatelessWidget {
                           curve: Curves.easeOut,
                           onToggle: (index) {
                             if (controller.regNumberController.text.isNum &&
-                                controller.regNumberController.text.isNotEmpty) {
+                                controller
+                                    .regNumberController.text.isNotEmpty) {
                               controller.value(index);
                               controller.sensorType('D');
                               controller.onUpdateSmoke();
@@ -188,7 +212,8 @@ class HomeScreen extends StatelessWidget {
                               : false,
                           onToggle: (index) {
                             if (controller.regNumberController.text.isNum &&
-                                controller.regNumberController.text.isNotEmpty) {
+                                controller
+                                    .regNumberController.text.isNotEmpty) {
                               controller.value(index);
                               controller.sensorType('E');
                               controller.onUpdateShutter();
@@ -233,9 +258,10 @@ class HomeScreen extends StatelessWidget {
                             animate: true,
                             curve: Curves.easeOut,
                             changeOnTap:
-                            controller.motionSensorUpdateStatus.value == true
-                                ? true
-                                : false,
+                                controller.motionSensorUpdateStatus.value ==
+                                        true
+                                    ? true
+                                    : false,
                             onToggle: (index) {
                               if (controller.regNumberController.text.isNum &&
                                   controller
@@ -244,7 +270,8 @@ class HomeScreen extends StatelessWidget {
                                 controller.sensorType('F');
                                 controller.onUpdateMotion();
                               } else {
-                                AppToast.showError("Please enter valid ID first");
+                                AppToast.showError(
+                                    "Please enter valid ID first");
                               }
                             },
                           )),

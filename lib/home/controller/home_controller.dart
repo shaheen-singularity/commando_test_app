@@ -107,16 +107,28 @@ class HomeController extends GetxController {
       if (res == true) {
         motionSensorUpdateStatus.toggle();
         AppToast.showError("Updated Successfully");
+      final res = await repository.onReset(
+          regNumber.value);
+      if (res.data["status"] == true) {
+        motionSensorUpdateStatus(false);
+        smokeSensorUpdateStatus(false);
+        fireSensorUpdateStatus(false);
+        shutterSensorUpdateStatus(false);
+        AppToast.showSuccess(res.data["message"].toString());
       } else {
-        AppToast.showError("Enter Valid ID");
+        AppToast.showError(res.data["message"].toString());
       }
-
     } catch (e) {
       debugPrint(e.toString());
       AppToast.showError(e.toString());
-
+      _resetState(ResourceUiState.error(e.toString()));
     }
   }
 
+  final _resetState = Rx<ResourceUiState>(ResourceUiState());
+  Status get resetState {
+    return _resetState.value.status;
+  }
 }
+
 
